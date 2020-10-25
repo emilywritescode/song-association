@@ -1,25 +1,29 @@
 body {
     font-size: 16px;
     font-family: "Arima Madurai";
-    text-align: center;
-    margin: 0;
+    background-color: #A0C9C6;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #A0C9C6;
+    flex-direction: column;
+    text-align: center;
+    margin: 0;
 }
 
 .wrapper {
     height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
+/* LANDING PAGE */
+
 #title {
-    margin-bottom: 0em;
     line-height: 1em;
+    margin-bottom: 0;
     color: #5B8582;
     font-size: 5.5em;
     font-weight: bold;
@@ -111,6 +115,7 @@ body {
 }
 
 #how-to-play-info {
+    width: 75%;
     height: 70%;
     display: flex;
     align-items: center;
@@ -129,4 +134,59 @@ body {
 #how-to-play-info img {
     height: 25px;
     vertical-align: middle;
+}
+
+/* GAME PAGE */
+#top {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    line-height: 3.5em;
+}
+
+#top p {
+    font-size: 2em;
+    margin: 0em 1.5em;
+}
+
+#word {
+    font-size: 3em;
+    margin: 0;
+}
+
+input[type=text] {
+    font-size: 1.2em;
+    width: 30em;
+    text-align: center;
+    font-family: 'Arima Madurai';
+    margin-top: 0.25em;
+    margin-bottom: 5em;
+    background-color: #D0DEDD;
+    border: 0;
+}
+
+#game-buttons {
+    margin-top: 15%;
+}
+
+#game-buttons, #game-buttons div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25em;
+}
+
+#game-buttons img{
+    margin: 0em 0.25em;
+    height: 32px;
+}
+
+#submit-button {
+    margin-right: 2em;
+}
+
+#skip-button {
+    margin-left: 2em;
 }

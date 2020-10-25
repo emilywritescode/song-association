@@ -1,69 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="description" content="Song Association, a web app game based on ELLE's popular web video series. Singing out loud is encouraged!" />
-    <meta name="keywords" content="song association, songs, song, music, web game, fill in the blank, ELLE" />
-    <title>Song Association</title>
-    <link href="https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@300;700&display=swap" rel="stylesheet">
-    <link href="/style.css" rel="stylesheet" type="text/css">
-</head>
-
-<body>
-    <div class="wrapper">
-        <h1 id="title">
-            song association
-        </h1>
-        <p id="description">
-            inspired by ELLE's popular video series.<br />
-            <b>singing out loud encouraged!</b>
-        </p>
-        <div id="start-button">
-            <img src="/images/play-circle-regular.svg"/>
-        </div>
-        <p id="how-to-play-selection">
-            how to play
-        </p>
+<div class="wrapper">
+    <h1 id="title">
+        song association
+    </h1>
+    <p id="description">
+        inspired by ELLE's popular video series.<br />
+        <b>singing out loud encouraged!</b>
+    </p>
+    <div id="start-button">
+        <a href="/start"><img src="/images/play-circle-regular.svg"/></a>
     </div>
+    <p id="how-to-play-selection">
+        how to play
+    </p>
+</div>
 
-    <div id="how-to-play-box" class="hidden">
-        <div id="how-to-play-inner">
-            <div id="close">
-                <img src="/images/times-solid.svg" />
-            </div>
-            <div id="how-to-play-header">
-                <h1>how to play</h1>
-                <h2>song association</h2>
-            </div>
-            <div id="how-to-play-info">
-                <p>
-                    <b>press the play button</b> <img src="/images/play-circle-regular.svg" /> to start a new game.
-                </p>
-                <p>
-                    on the screen you will see a word.
-                </p>
-                <p>
-                    you will have 25 seconds to <b>successfully name a song with that word in its lyrics</b>.
-                </p>
+<div id="how-to-play-box" class="hidden">
+    <div id="how-to-play-inner">
+        <div id="close">
+            <img src="/images/times-solid.svg" />
+        </div>
+        <div id="how-to-play-header">
+            <h1>how to play</h1>
+            <h2>song association</h2>
+        </div>
+        <div id="how-to-play-info">
+            <p>
+                <b>press the play button</b> <img src="/images/play-circle-regular.svg" /> to start a new game.
+            </p>
+            <p>
+                on the screen you will see a word.
+            </p>
+            <p>
+                you will have 25 seconds to <b>successfully name a song with that word in its lyrics</b>.
+            </p>
 
-                <p>
-                    <small><i>enter the song's title and artist (if you can) <br />
-                    you can also enter lyrics. <br />
-                    song suggestions will pop up.</i></small>
-                </p>
+            <p>
+                <small><i>enter the song's title and artist (if you can) <br />
+                you can also enter lyrics. <br />
+                song suggestions will pop up.</i></small>
+            </p>
 
-                <p id="skip">
-                    if you can't think of a song, you can press skip <img src="/images/forward-solid.svg" />
-                </p>
-                <p>
-                    there will be 10 rounds. singing out loud is encouraged!
-                </p>
-            </div>
+            <p id="skip">
+                if you can't think of a song, you can press skip <img src="/images/forward-solid.svg" />
+            </p>
+            <p>
+                there will be 10 rounds. singing out loud is encouraged!
+            </p>
         </div>
     </div>
+</div>
 
-    <script src="/index.js"></script>
-</body>
-
-</html>
+<script src="/index.js"></script>
