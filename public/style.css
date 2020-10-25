@@ -1,0 +1,132 @@
+body {
+    font-size: 16px;
+    font-family: "Arima Madurai";
+    text-align: center;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #A0C9C6;
+}
+
+.wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#title {
+    margin-bottom: 0em;
+    line-height: 1em;
+    color: #5B8582;
+    font-size: 5.5em;
+    font-weight: bold;
+}
+
+#description {
+    color: #504040;
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 2em;
+    line-height: 1.1em;
+}
+
+#start-button img {
+    height: 84px;
+    border-radius: 42px;
+}
+
+#start-button img:hover {
+    cursor: pointer;
+}
+
+#how-to-play-selection {
+    margin-top: 2em;
+    font-size: 1.5em;
+    color: #332F2F;
+    text-decoration: underline;
+}
+
+#how-to-play-selection:hover {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#how-to-play-box {
+    position: absolute;
+    height: 90%;
+    width: 75%;
+    background-color: #D0DEDD;
+    z-index: 1;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 0.25em #5B8582 solid;
+}
+
+#close img {
+    position: absolute;
+    right: 1.5em;
+    top: 1.5em;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+#how-to-play-box #close img:hover {
+    cursor: pointer;
+}
+
+#how-to-play-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 95%;
+    width: 95%;
+}
+
+#how-to-play-header {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    line-height: 1em;
+}
+
+#how-to-play-header h1 {
+    font-size: 2.5em;
+    color: #332F2F;
+}
+
+#how-to-play-header h2 {
+    font-size: 2em;
+    color: #5B8582;
+    margin-bottom: 0.5em;
+}
+
+#how-to-play-info {
+    height: 70%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #504040;
+    padding: 0.5em 1.5em;
+    overflow-y: auto;
+}
+
+#how-to-play-info p {
+    font-size: 1.35em;
+    margin: 0.5em;
+    line-height: 1em;
+}
+
+#how-to-play-info img {
+    height: 25px;
+    vertical-align: middle;
+}
