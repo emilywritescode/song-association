@@ -7,22 +7,21 @@ body {
     align-items: center;
     flex-direction: column;
     text-align: center;
-    margin: 0;
+    margin: 0 auto;
 }
 
 .wrapper {
     height: 100vh;
     width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    position: relative;
+    text-align: center;
 }
 
 /* LANDING PAGE */
 
 #title {
     line-height: 1em;
+    margin-top: 1.5em;
     margin-bottom: 0;
     color: #5B8582;
     font-size: 5.5em;
@@ -37,9 +36,10 @@ body {
     line-height: 1.1em;
 }
 
+
 #start-button img {
-    height: 84px;
-    border-radius: 42px;
+    height: 48px;
+    border-radius: 24px;
 }
 
 #start-button img:hover {
@@ -61,13 +61,15 @@ body {
     display: none !important;
 }
 
+/* HOW TO PLAY MODAL BOX */
+
 #how-to-play-box {
     position: absolute;
     height: 90%;
     width: 75%;
     background-color: #D0DEDD;
     z-index: 1;
-    opacity: 0.9;
+    opacity: 0.95;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -99,7 +101,7 @@ body {
 
 #how-to-play-header {
     margin-top: 2em;
-    margin-bottom: 2em;
+    margin-bottom: 1.5em;
     line-height: 1em;
 }
 
@@ -116,7 +118,6 @@ body {
 
 #how-to-play-info {
     width: 75%;
-    height: 70%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -136,38 +137,53 @@ body {
     vertical-align: middle;
 }
 
+
 /* GAME PAGE */
+
 #top {
+    position: relative;
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 10%;
+    padding: 0;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
-    line-height: 3.5em;
+    justify-content: center;
 }
 
-#top p {
-    font-size: 2em;
-    margin: 0em 1.5em;
+#count, #timer {
+    width: 10%;
+    font-size: 1.5em;
+    padding: 2.5%;
+    text-align: center;
 }
 
 #word {
-    font-size: 3em;
-    margin: 0;
+    font-size: 1.75em;
+    line-height: 1.25em;
+    text-align: center;
+    width: 50%;
+    margin: 0 2.5%;
+    padding: 0;
+    word-wrap: break-word;
 }
 
 input[type=text] {
-    font-size: 1.2em;
-    width: 30em;
+    font-size: 1.5em;
     text-align: center;
     font-family: 'Arima Madurai';
-    margin-top: 0.25em;
-    margin-bottom: 5em;
     background-color: #D0DEDD;
-    border: 0;
+    text-overflow: ellipsis;
+    width: 65%;
+    padding: 0.25em;
+    border: none;
 }
 
 #game-buttons {
-    margin-top: 15%;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    right: 50%
 }
 
 #game-buttons, #game-buttons div {
@@ -176,6 +192,7 @@ input[type=text] {
     justify-content: center;
     align-items: center;
     font-size: 1.25em;
+    font-family: 'Arima Madurai'
 }
 
 #game-buttons img{

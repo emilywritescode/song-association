@@ -1,0 +1,24 @@
+<div class="wrapper">
+    <div id="top">
+        <div id="count"><%=status_count%>/10</div>
+        <div id="word"><h1><%=word%></h1></div>
+        <div id="timer">0:25</div>
+    </div>
+
+    <form method="post" action="/game">
+        <input type="hidden" name="status_count" value=<%= status_count %>>
+        <input type="text" placeholder="Enter song/artist or lyrics">
+        <div id="game-buttons">
+            <div id="submit-button">
+                <button type="submit" name="submit">
+                submit <img src="/images/check-circle-regular.svg"/>
+                </button>
+            </div>
+            <div id="skip-button">
+                <button type="submit" name="skip">
+                skip <img src="/images/forward-solid.svg" />
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
