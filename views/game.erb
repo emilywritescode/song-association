@@ -1,24 +1,21 @@
 <div class="wrapper">
     <div id="top">
-        <div id="count"><%=status_count%>/10</div>
-        <div id="word"><h1><%=word%></h1></div>
-        <div id="timer">0:25</div>
+        <div id="count"><%=@status_count%>/10</div>
+        <div id="word"><h1><%=@word%></h1></div>
+        <div id="timer"></div>
     </div>
 
     <form method="post" action="/game">
-        <input type="hidden" name="status_count" value=<%= status_count %>>
-        <input type="text" placeholder="Enter song/artist or lyrics">
+        <input type="text" name="song" placeholder="Search song/artist or lyrics" onkeypress="return rejectEnterKey(this)">
         <div id="game-buttons">
-            <div id="submit-button">
-                <button type="submit" name="submit">
+            <button id="submit" type="submit" name="submitted">
                 submit <img src="/images/check-circle-regular.svg"/>
-                </button>
-            </div>
-            <div id="skip-button">
-                <button type="submit" name="skip">
+            </button>
+            <button id="skip" type="submit" name="skipped">
                 skip <img src="/images/forward-solid.svg" />
-                </button>
-            </div>
+            </button>
         </div>
     </form>
 </div>
+
+<script src="/game.js"></script>

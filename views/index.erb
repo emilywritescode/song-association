@@ -14,11 +14,14 @@
     <p id="how-to-play-selection">
         how to play
     </p>
+    <p id="credits-selection">
+        <small>credits</small>
+    </p>
 </div>
 
 <div id="how-to-play-box" class="hidden">
     <div id="how-to-play-inner">
-        <div id="close">
+        <div class="close" id="close_howtoplay">
             <img src="/images/times-solid.svg" />
         </div>
         <div id="how-to-play-header">
@@ -37,9 +40,10 @@
             </p>
 
             <p>
-                <small><i>enter the song's title and artist (if you can) <br />
-                you can also enter lyrics. <br />
-                song suggestions will pop up.</i></small>
+                <small><i>search for songs by entering title/artist/lyrics. <br />
+                song suggestions from Genius will pop up. <br />
+                be sure to select a song before pressing submit!
+                </i></small>
             </p>
 
             <p id="skip">
@@ -50,6 +54,20 @@
             </p>
         </div>
     </div>
+</div>
+
+<div id="credits-box" class="hidden">
+    <div class="close" id="close_credits">
+        <img src="/images/times-solid.svg" />
+    </div>
+    <div id="credits-top">
+        <h1>credits for</h1>
+        <h2>song association</h2>
+    </div>
+    <p>
+        Web app created and developed by <a href="http://emilywritescode.com">Emily Lau</a>.<br />
+        <a href="https://genius.com/developers">Genius API</a> for song suggestions and results.
+    </p>
 </div>
 
 <script src="/index.js"></script>

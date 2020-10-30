@@ -3,6 +3,14 @@ require 'sinatra'
 enable :sessions
 
 
+post '/search' do
+    search = request.body.read
+    puts search
+
+
+end
+
+
 get '/' do
     erb :index
 end
@@ -11,24 +19,34 @@ end
 get '/game' do
     @status_count = get_status_count()
     @word = get_word()
-
-
     erb :game
 end
 
 
 post '/game' do
+    puts params
+    if params["submitted"]
+        puts 'submitted'
+    elsif params["skipped"]
+        puts 'skipped'
+    end
     # update count and redirect appropriately
     @status_count = session[:status_count] + 1
     session[:status_count] = @status_count
 
     if @status_count == 11
         puts "game is done"
+        #compute_score()
         session.clear
-        redirect '/'
+        redirect '/results'
     else
         redirect '/game'
     end
+end
+
+
+get '/results' do
+    erb :results
 end
 
 
@@ -46,9 +64,7 @@ end
 
 def get_words()
     file_words = File.read("words.txt").split
-    @words = file_words.sample(10)
-    puts @words
-    @words
+    file_words.sample(10)
 end
 
 
