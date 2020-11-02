@@ -1,4 +1,6 @@
 *.txt
+*.json
+.env
 
 *.gem
 *.rbc

@@ -1,4 +1,12 @@
 <div class="wrapper">
-    results page
-    <a href="/">back to home</a>
+    <div id="results">
+        <h1>Your Results</h1>
+        <h2><%=@correct_submissions%>/10</h2>
+        <% for @res in @arr %>
+            <p>
+                <%= @res[0] %> : <%= @res[1].to_s %>
+            </p>
+        <% end %>
+        <a href="/">back to home</a>
+    </div>
 </div>

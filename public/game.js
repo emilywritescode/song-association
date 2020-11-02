@@ -10,26 +10,31 @@ function countdown (time, update, done) {
     }, 100); // the smaller this number, the more accurate the timer will be
 }
 
-//
-// countdown (
-//     25000, // milliseconds
-//     function (seconds_left) {  // update
-//         document.getElementById('timer').innerHTML = seconds_left;
-//     },
-//     function () {  // timer done, automatically skip
-//        document.getElementById("skip").click()
+
+countdown (
+    25000, // milliseconds
+    function (seconds_left) {  // update
+        document.getElementById('timer').innerHTML = seconds_left;
+    },
+    function () {  // timer done, automatically skip
+       document.getElementById("skip").click()
+    }
+);
+
+// if (elem.value.trim()) {
+//     console.log(elem.value);
+//     var req = new XMLHttpRequest();
+//     req.onreadystatechange = function() {
+//         console.log('YA YEET');
 //     }
-// );
+//     req.open("POST", "/search");
+//     req.send(elem.value.trim());
+//
+// }
 
 
-function rejectEnterKey(elem) {
+function rejectEnterKey() {
     if (event.keyCode==13) {
-        if (elem.value.trim()) {
-            console.log(elem.value);
-            var req = new XMLHttpRequest();
-            req.open("POST", "/search")
-            req.send(elem.value.trim())
-        }
         event.preventDefault();
         return false;
     }

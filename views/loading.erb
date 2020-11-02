@@ -1,0 +1,10 @@
+<div class="wrapper">
+    we're loading the page :)
+</div>
+
+<script>
+    var req = new XMLHttpRequest();
+    req.open('GET', '/results', true);
+    req.send();
+    location.href = 'http://localhost:4567/results'
+</script>

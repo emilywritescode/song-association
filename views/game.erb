@@ -6,7 +6,8 @@
     </div>
 
     <form method="post" action="/game">
-        <input type="text" name="song" placeholder="Search song/artist or lyrics" onkeypress="return rejectEnterKey(this)">
+        <input type="text" name="title" placeholder="Song title" onkeypress="return rejectEnterKey()">
+        <input type="text" name="artist" placeholder="Song artist" onkeypress="return rejectEnterKey()">
         <div id="game-buttons">
             <button id="submit" type="submit" name="submitted">
                 submit <img src="/images/check-circle-regular.svg"/>
