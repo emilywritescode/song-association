@@ -7,6 +7,11 @@ require 'json'
 enable :sessions
 
 
+get '/newsession' do
+    session.clear
+    redirect '/'
+end
+
 
 get '/' do
     erb :index
@@ -23,17 +28,23 @@ end
 
 post '/game' do
     if params["submitted"]
-        puts 'submitted'
-        (session[:songs] ||= []) << "#{params["title"]} #{params["artist"]}"
+        if params["title"].nil? and params["artist"].nil?
+            puts "submitted empty"
+            (session[:submitted] ||= []) << nil
+        else
+            puts "submitted: #{params["title"]} #{params["artist"]}"
+            (session[:submitted] ||= []) << "#{params["title"]} #{params["artist"]}"
+        end
     elsif params["skipped"]
-        puts 'skipped'
-        (session[:songs] ||= []) << nil
+        puts "skipped"
+        (session[:submitted] ||= []) << nil
     end
 
-    # update count and redirect appropriately
+    # update count
     @status_count = session[:status_count] + 1
     session[:status_count] = @status_count
 
+    # redirect appropriately
     if @status_count == 11
         puts "game is done"
         redirect '/loading'
@@ -50,25 +61,29 @@ end
 
 get '/results' do
     puts '===results==='
-    @songs = session[:songs]
-    @songs_searched = []  # full title of top result on Genius
-    @songs_valid = []  # check if song has word in lyrics
+    @words = session[:words]
+    @results = []  # full title of top result on Genius
+    @song_ids = []  # Genius IDs
+    @valids = []  # check if song has word in lyrics
 
-    @songs.each do |song|
-        result_from_search = search(song)
-        if result_from_search.nil?
-            songs_searched << 'SKIPPED WORD'
-            songs_valid << nil
+    session[:submitted].each do |s|
+        if s.nil?
+            @results << 'SKIPPED WORD'
+            @song_ids << nil
+            @valids << nil
         else
-            songs_searched << result_from_search[0]
-            songs_valid << true
+            song_result, id = search(s)
+            @results << result_from_search
+            @song_ids << id
+            @valids << true
         end
     end
 
-    @arr = session[:words].zip(@songs_searched)
-    @arr.each do |item|
-        puts "(word) #{item[0]} (title) #{item[1]}"
+    for i in 0..9
+        puts "(WORD) #{@words[i]} : (RESULT) #{@results[i]} : (CORRECT) #{@valids[i]}"
     end
+
+    @correct_submissions = @valids.count(true)
 
     erb :results
 end
@@ -102,26 +117,22 @@ end
 
 
 def search(song_query)
-    if song_query.nil?
-        nil
-    else
-        uri = URI("https://api.genius.com/search")
-        params = { q: "#{song_query}" }
+    uri = URI("https://api.genius.com/search")
+    params = { q: "#{song_query}" }
 
-        http = Net::HTTP.new(uri.host, uri.port)
-        http.use_ssl = true
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
 
-        uri.query = URI.encode_www_form(params)
+    uri.query = URI.encode_www_form(params)
 
-        request = Net::HTTP::Get.new(uri)
-        request["Authorization"] = "Bearer #{ENV['GENIUS_ACCESS_TOKEN']}"
+    request = Net::HTTP::Get.new(uri)
+    request["Authorization"] = "Bearer #{ENV['GENIUS_ACCESS_TOKEN']}"
 
-        response = http.request(request)
-        data = JSON.parse(response.read_body)
+    response = http.request(request)
+    data = JSON.parse(response.read_body)
 
-        song_full_title = data["response"]["hits"][0]["result"]["full_title"]
-        song_id = data["response"]["hits"][0]["result"]["id"]
+    song_full_title = data["response"]["hits"][0]["result"]["full_title"]
+    song_id = data["response"]["hits"][0]["result"]["id"]
 
-        song_full_title, true
-    end
+    song_full_title, song_id
 end
