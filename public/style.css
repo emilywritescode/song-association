@@ -12,7 +12,7 @@ body {
 
 .wrapper {
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     position: relative;
     text-align: center;
 }
@@ -296,20 +296,46 @@ button:hover {
 
 /* RESULTS PAGE */
 
-#results {
+#results-header {
+    font-size: 2.25em;
+    margin-top: 1em;
+    margin-bottom: 0;
     color: #504040;
 }
 
-#results h1 {
-    margin-top: 1em;
-    margin-bottom: 0;
-}
-
-#results h2 {
-    margin-top: 0;
-}
-
-#results p {
+#results-score {
+    font-size: 2.25em;
     margin: 0;
+}
+
+#results-text {
+   width: 90%;
+   color: #504040;
+   margin: 1.25em auto;
+   padding: 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-wrap: wrap;
+}
+
+#results-text p {
+    padding: 1em;
+    margin: 0.5em;
+    border: 0.05em #5B8582 solid;
+    font-size: 1.25em;
+}
+
+#results-text a {
+    color: #5B8582;
+    text-decoration: none;
+}
+
+#new-session {
+    margin-bottom: 1.5em;
+}
+
+#new-session a {
+    color: #5B8582;
     font-size: 1.25em;
 }

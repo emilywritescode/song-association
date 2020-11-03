@@ -63,18 +63,18 @@ get '/results' do
     puts '===results==='
     @words = session[:words]
     @results = []  # full title of top result on Genius
-    @song_ids = []  # Genius IDs
+    @song_urls = []  # Genius lyrics URL
     @valids = []  # check if song has word in lyrics
 
     session[:submitted].each do |s|
         if s.nil?
-            @results << 'SKIPPED WORD'
-            @song_ids << nil
+            @results << 'No answer'
+            @song_urls << nil
             @valids << nil
         else
-            song_result, id = search(s)
-            @results << result_from_search
-            @song_ids << id
+            song_result, song_url = search(s)
+            @results << song_result
+            @song_urls << song_url
             @valids << true
         end
     end
@@ -132,7 +132,7 @@ def search(song_query)
     data = JSON.parse(response.read_body)
 
     song_full_title = data["response"]["hits"][0]["result"]["full_title"]
-    song_id = data["response"]["hits"][0]["result"]["id"]
+    song_url = data["response"]["hits"][0]["result"]["url"]
 
-    song_full_title, song_id
+    [song_full_title, song_url]
 end
