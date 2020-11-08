@@ -3,6 +3,7 @@ require 'sinatra'
 require "uri"
 require 'net/http'
 require 'json'
+require 'nokogiri'
 
 enable :sessions
 
@@ -66,21 +67,34 @@ get '/results' do
     @song_urls = []  # Genius lyrics URL
     @valids = []  # check if song has word in lyrics
 
-    session[:submitted].each do |s|
+    for i in 0..9 do
+        s = session[:submitted][i]
+        puts "#{i}: #{s}"
+
         if s.nil?
             @results << 'No answer'
             @song_urls << nil
             @valids << nil
         else
-            song_result, song_url = search(s)
-            @results << song_result
-            @song_urls << song_url
-            @valids << true
+            song_result, genius_url = search(s)
+            puts "#{song_result} / #{genius_url}"
+            if genius_url
+                valid = check_lyrics(genius_url, @words[i])
+                if valid.nil?
+                    @results << 'Invalid answer'
+                    @song_urls << nil
+                    @valids << nil
+                else
+                    @valids << valid
+                    @results << song_result
+                    @song_urls << genius_url
+                end
+            else
+                @results << 'Invalid answer'
+                @song_urls << nil
+                @valids << nil
+            end
         end
-    end
-
-    for i in 0..9
-        puts "(WORD) #{@words[i]} : (RESULT) #{@results[i]} : (CORRECT) #{@valids[i]}"
     end
 
     @correct_submissions = @valids.count(true)
@@ -135,4 +149,22 @@ def search(song_query)
     song_url = data["response"]["hits"][0]["result"]["url"]
 
     [song_full_title, song_url]
+end
+
+
+def check_lyrics(genius_url, word)
+    uri = URI(genius_url)
+    response = Net::HTTP.get_response(uri)
+    if response.code == '200'
+        doc = Nokogiri::HTML(response.body)
+        # .lyrics class paragraph / remove text in square brackets (like [Verse 1])
+        lyrics = doc.css('.lyrics p').text.gsub(/\[.*\]/, "").gsub(/^$\n^$\n/, "\n").downcase
+        # remove apostrophes/quotes/parentheses/commas/em-dashes/hyphens/underscores
+        lyrics_words = lyrics.gsub(/[',\(\)-_—]/, "").split
+
+        lyrics_words.include? word.downcase
+    else
+        puts response.msg
+        nil
+    end
 end

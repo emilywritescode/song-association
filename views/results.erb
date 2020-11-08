@@ -7,9 +7,9 @@
     <div id="results-text">
         <% for i in 0..9 %>
             <p>
-                <b><%=i+1%>. <%=@words[i]%></b><br />
+                <b><%=i+1%>. <%=@words[i]%> </b><br />
                 <% if @song_urls[i] %><a href=<%=@song_urls[i]%>><%=@results[i]%></a><% else %><%=@results[i]%><% end %>
-                <% if @valids[i] %> (<%=@valids[i]%>)<% end %>
+                <% if @valids[i] == true %> - CORRECT! [+1] <%elsif @valids[i] == false %> - INCORRECT! [+0] <% end %>
             </p>
         <% end %>
     </div>
