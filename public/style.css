@@ -18,6 +18,20 @@ body {
 }
 
 /* LANDING PAGE */
+#flash-error {
+    width: 80%;
+    height: 5%;
+    background-color: rgba(91, 133, 130, 0.2);
+    position: fixed;
+    top: 5%;
+    border: 2px #5B8582 solid;
+    color: #504040;
+    font-size: 1.25em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25em;
+}
 
 #title {
     line-height: 1em;
@@ -35,7 +49,6 @@ body {
     margin-bottom: 2em;
     line-height: 1.1em;
 }
-
 
 #start-button img {
     height: 48px;

@@ -22,4 +22,10 @@ window.onload = function(){
     close_credits.onclick = function() {
         credits_box.classList.add("hidden");
     }
+
+    document.onclick = function() {
+        if (document.getElementById("flash-error")) {
+            document.getElementById("flash-error").classList.add("hidden");
+        }
+    }
 }

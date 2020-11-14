@@ -4,8 +4,22 @@ require "uri"
 require 'net/http'
 require 'json'
 require 'nokogiri'
+require 'sinatra/flash'
 
 enable :sessions
+set :show_exceptions, :after_handler
+
+
+not_found do
+    flash[:error] = 'Page not found.'
+    redirect '/'
+end
+
+
+error do
+    flash[:error] = 'Unexpected error occurred.'
+    redirect '/'
+end
 
 
 get '/newsession' do
